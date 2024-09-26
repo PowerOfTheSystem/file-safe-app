@@ -1,0 +1,115 @@
+<!-- Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid justify-content-between">
+    <!-- Left elements -->
+    <div class="d-flex">
+      <!-- Brand -->
+      <img class="navbar-brand me-2 mb-1 d-flex align-items-center" src="../../../assets/img/main/logo.png" height="30"
+        alt="" loading="lazy" style="margin-top: 2px;" />
+
+    </div>
+    <!-- Left elements -->
+
+    <!-- Right elements -->
+    <ul class="navbar-nav flex-row">
+      <li class="nav-item me-3 me-lg-1">
+        <a class="nav-link d-sm-flex align-items-sm-center">
+          <!-- <img src="https://mdbootstrap.com/img/new/avatars/1.webp" class="rounded-circle" height="22" alt=""
+            loading="lazy" /> -->
+          <strong class="d-none d-sm-block ms-1">Welcome back, Christopher</strong>
+        </a>
+      </li>
+      <li class="nav-item me-3 me-lg-1">
+        <a class="nav-link" (click)="logout()">
+          <span><i class="fas fa-sign-out fa-lg"></i></span>
+        </a>
+      </li>
+    </ul>
+    <!-- Right elements -->
+  </div>
+</nav>
+<!-- Navbar -->
+
+
+
+<div class="container p-4">
+
+  <!-- <div class="row pb-4">
+    <div class="col-md">
+
+      <img src="../../../assets/img/main/dashboard.png" width="400" alt="login form" />
+
+    </div>
+
+    <div class="col-md">
+
+      
+
+    </div>
+  </div> -->
+
+  <div class="row">
+
+    <div class="col-10">
+
+      <div class="border rounded-5 p-4">
+
+        <input class="form-control form-control-lg" type="file" (change)="onFileSelected($event)" multiple />
+
+      </div>
+
+    </div>
+
+    <div class="col-2">
+
+      <div class="border rounded-5 h-100 d-flex align-items-center justify-content-center">
+
+        <a class="btn btn-primary text-white" (click)="deleteAllFiles()" role="button" mdbRipple>
+          <i class="fas fa-trash me-2"></i>
+          Clear All Files
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <hr class="hr" />
+
+  <div class="row">
+    <div class="col-md">
+      <ng-container *ngIf="uploadedFiles.length > 0; else noFilesAvailable">
+        <div class="table-responsive border rounded-5">
+
+          <table class="table align-middle mb-0 bg-white">
+            <tbody>
+              <tr *ngFor="let file of uploadedFiles">
+                <td>
+                  <div class="d-flex align-items-center">
+                    <img [src]="file.imgURL" alt="" style="width: 45px; height: 45px">
+                    <div class="ms-3">
+                      <p class="fw-bold mb-1">{{ file.name }}</p>
+                      <p class="text-muted mb-0">Size: {{ file.size }} kb</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <a class="btn btn-danger text-white" (click)="deleteFile(file.id)" role="button" mdbRipple>
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </ng-container>
+      <ng-template #noFilesAvailable>
+        <section class="text-center">
+          <h4>No files uploaded</h4>
+        </section>
+      </ng-template>
+    </div>
+  </div>
+</div>
