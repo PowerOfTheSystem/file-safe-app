@@ -6,14 +6,14 @@ import {
   normalizePassiveListenerOptions
 } from "./chunk-U44VEVRQ.js";
 import {
-  FormsModule,
-  NgControl
-} from "./chunk-AYDBLHZB.js";
-import {
   coerceBooleanProperty,
   coerceElement,
   coerceNumberProperty
 } from "./chunk-EACFXECD.js";
+import {
+  FormsModule,
+  NgControl
+} from "./chunk-AYDBLHZB.js";
 import {
   CommonModule,
   DOCUMENT

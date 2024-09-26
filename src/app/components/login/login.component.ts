@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +14,12 @@ import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 export class LoginComponent {
   isLoginView: boolean = true;
 
-  userRegisterObj: any = {
+  userRegisterObj: User = {
     password: '',
     email: '',
   };
 
-  userLogin: any = {
+  userLogin: User = {
     email: '',
     password: '',
   };
@@ -26,15 +27,15 @@ export class LoginComponent {
   router = inject(Router);
 
   onRegister() {
-    const isLocalData = localStorage.getItem('userStorage');
+    const isLocalData = sessionStorage.getItem('userStorage');
     if (isLocalData != null) {
       const localArray = JSON.parse(isLocalData);
       localArray.push(this.userRegisterObj);
-      localStorage.setItem('userStorage', JSON.stringify(localArray));
+      sessionStorage.setItem('userStorage', JSON.stringify(localArray));
     } else {
       const localArray = [];
       localArray.push(this.userRegisterObj);
-      localStorage.setItem('userStorage', JSON.stringify(localArray));
+      sessionStorage.setItem('userStorage', JSON.stringify(localArray));
     }
 
     alert('Registration Success');
@@ -42,7 +43,7 @@ export class LoginComponent {
   }
 
   onLogin() {
-    const isLocalData = localStorage.getItem('userStorage');
+    const isLocalData = sessionStorage.getItem('userStorage');
     if (isLocalData != null) {
       const users = JSON.parse(isLocalData);
 
@@ -52,13 +53,13 @@ export class LoginComponent {
           m.password == this.userLogin.password
       );
       if (isUserFound != undefined) {
-        localStorage.setItem('userLoggedIn', JSON.stringify(isUserFound));
+        sessionStorage.setItem('userLoggedIn', JSON.stringify(isUserFound));
         this.router.navigateByUrl('dashboard');
       } else {
-        alert('User name or password is Wrong');
+        alert('Username or password is wrong');
       }
     } else {
-      alert('No User Found');
+      alert('No user registered');
     }
   }
 }

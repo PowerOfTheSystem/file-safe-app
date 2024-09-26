@@ -1,22 +1,14 @@
-<!-- Navbar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid justify-content-between">
-    <!-- Left elements -->
     <div class="d-flex">
-      <!-- Brand -->
       <img class="navbar-brand me-2 mb-1 d-flex align-items-center" src="../../../assets/img/main/logo.png" height="30"
         alt="" loading="lazy" style="margin-top: 2px;" />
 
     </div>
-    <!-- Left elements -->
-
-    <!-- Right elements -->
     <ul class="navbar-nav flex-row">
       <li class="nav-item me-3 me-lg-1">
         <a class="nav-link d-sm-flex align-items-sm-center">
-          <!-- <img src="https://mdbootstrap.com/img/new/avatars/1.webp" class="rounded-circle" height="22" alt=""
-            loading="lazy" /> -->
-          <strong class="d-none d-sm-block ms-1">Welcome back, Christopher</strong>
+          <strong class="d-none d-sm-block ms-1">Welcome back, {{userLoggedIn.email}}</strong>
         </a>
       </li>
       <li class="nav-item me-3 me-lg-1">
@@ -25,28 +17,10 @@
         </a>
       </li>
     </ul>
-    <!-- Right elements -->
   </div>
 </nav>
-<!-- Navbar -->
-
-
 
 <div class="container p-4">
-
-  <!-- <div class="row pb-4">
-    <div class="col-md">
-
-      <img src="../../../assets/img/main/dashboard.png" width="400" alt="login form" />
-
-    </div>
-
-    <div class="col-md">
-
-      
-
-    </div>
-  </div> -->
 
   <div class="row">
 
@@ -64,10 +38,11 @@
 
       <div class="border rounded-5 h-100 d-flex align-items-center justify-content-center">
 
-        <a class="btn btn-primary text-white" (click)="deleteAllFiles()" role="button" mdbRipple>
+        <button type="button" class="btn btn-primary text-white" (click)="deleteAllFiles()"
+          [disabled]="userLoggedInUploadedFiles.length > 0 ? false : true" mdbRipple>
           <i class="fas fa-trash me-2"></i>
           Clear All Files
-        </a>
+        </button>
 
       </div>
 
@@ -79,12 +54,12 @@
 
   <div class="row">
     <div class="col-md">
-      <ng-container *ngIf="uploadedFiles.length > 0; else noFilesAvailable">
+      <ng-container *ngIf="userLoggedInUploadedFiles.length > 0; else noFilesAvailable">
         <div class="table-responsive border rounded-5">
 
           <table class="table align-middle mb-0 bg-white">
             <tbody>
-              <tr *ngFor="let file of uploadedFiles">
+              <tr *ngFor="let file of userLoggedInUploadedFiles">
                 <td>
                   <div class="d-flex align-items-center">
                     <img [src]="file.imgURL" alt="" style="width: 45px; height: 45px">

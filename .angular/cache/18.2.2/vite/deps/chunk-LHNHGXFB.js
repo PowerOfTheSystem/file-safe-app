@@ -1,4 +1,9 @@
 import {
+  DomPortalOutlet,
+  PortalModule,
+  TemplatePortal
+} from "./chunk-XDFZCIFN.js";
+import {
   Platform,
   RtlScrollAxisType,
   _getEventTarget,
@@ -6,11 +11,6 @@ import {
   getRtlScrollAxisType,
   supportsScrollBehavior
 } from "./chunk-U44VEVRQ.js";
-import {
-  DomPortalOutlet,
-  PortalModule,
-  TemplatePortal
-} from "./chunk-XDFZCIFN.js";
 import {
   coerceArray,
   coerceCssPixelValue,
@@ -4705,4 +4705,4 @@ export {
   Overlay,
   OverlayModule
 };
-//# sourceMappingURL=chunk-NCTD35PU.js.map
+//# sourceMappingURL=chunk-LHNHGXFB.js.map
