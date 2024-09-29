@@ -1,4 +1,8 @@
 import {
+  ContentObserver,
+  ObserversModule
+} from "./chunk-GS5YEW5E.js";
+import {
   BreakpointObserver
 } from "./chunk-5AYEE4XO.js";
 import {
@@ -21,10 +25,6 @@ import {
   PortalModule,
   TemplatePortal
 } from "./chunk-XDFZCIFN.js";
-import {
-  ContentObserver,
-  ObserversModule
-} from "./chunk-GS5YEW5E.js";
 import {
   Platform,
   _getEventTarget,

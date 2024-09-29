@@ -17,57 +17,56 @@
                 </div>
 
                 @if(isLoginView) {
-                <form>
+                <form data-test="login-form">
 
                   <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
 
                   <mdb-form-control class="mb-4">
                     <input mdbInput name="email" [(ngModel)]="userLogin.email" type="email" id="loginEmail"
-                      class="form-control form-control-lg" />
+                      class="form-control form-control-lg" data-test="login-email" />
                     <label mdbLabel class="form-label" for="loginEmail">Email address</label>
                   </mdb-form-control>
 
                   <mdb-form-control class="mb-4">
                     <input mdbInput name="password" [(ngModel)]="userLogin.password" type="password" id="loginPassword"
-                      class="form-control form-control-lg" />
+                      class="form-control form-control-lg" data-test="login-password" />
                     <label mdbLabel class="form-label" for="loginPassword">Password</label>
                   </mdb-form-control>
 
                   <div class="pt-1 mb-4">
-                    <button data-mdb-button-init data-mdb-ripple-init (click)="onLogin()" class="btn btn-lg btn-block"
-                      type="button" style="background-color: #f5a633; color: #0d1517">Login</button>
+                    <button data-mdb-button-init data-mdb-ripple-init (click)="onLogin()"
+                      class="btn btn-primary btn-lg btn-block" type="button" data-test="login-button">Login</button>
                   </div>
 
-                  <p>Don't have an account? <a class="cursor-pointer" (click)="isLoginView = false" style="color: #f5a633">Register here</a>
+                  <p>Don't have an account? <a class="cursor-pointer" (click)="isLoginView = false"
+                      data-test="register-link">Register here</a>
                   </p>
 
                 </form>
                 } @else {
-                <form>
+                <form data-test="register-form">
 
                   <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Register</h5>
 
                   <mdb-form-control class="mb-4">
-                    <input mdbInput name="email" [(ngModel)]="userRegisterObj.email" type="email"
-                      id="registerEmail" class="form-control form-control-lg" />
+                    <input mdbInput name="email" [(ngModel)]="userRegisterObj.email" type="email" id="registerEmail"
+                      class="form-control form-control-lg" data-test="register-email" />
                     <label mdbLabel class="form-label" for="registerEmail">Email address</label>
                   </mdb-form-control>
 
                   <mdb-form-control class="mb-4">
                     <input mdbInput name="password" [(ngModel)]="userRegisterObj.password" type="password"
-                      id="registerPassword" class="form-control form-control-lg" />
+                      id="registerPassword" class="form-control form-control-lg" data-test="register-password" />
                     <label mdbLabel class="form-label" for="registerPassword">Password</label>
                   </mdb-form-control>
 
                   <div class="pt-1 mb-4">
-                    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-lg btn-block"
-                      (click)="onRegister()" type="button"
-                      style="background-color: #f5a633; color: #0d1517">Register</button>
+                    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block"
+                      (click)="onRegister()" type="button" data-test="register-button">Register</button>
                   </div>
 
-
-                  <!-- <p>Don't have an account? <a  class="link-info" (click)="isLoginView = true">Login here</a></p> -->
-                  <p>Have an account? <a class="cursor-pointer" (click)="isLoginView = true" style="color: #f5a633">Login here</a></p>
+                  <p>Have an account? <a class="cursor-pointer" (click)="isLoginView = true"
+                      data-test="login-link">Login here</a></p>
 
                 </form>
                 }

@@ -1,17 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" data-test="navbar">
   <div class="container-fluid justify-content-between">
     <div class="d-flex">
-      <img class="navbar-brand me-2 mb-1 d-flex align-items-center" src="../../../assets/img/main/logo.png" height="30"
-        alt="" loading="lazy" style="margin-top: 2px;" />
-
+      <img class="navbar-brand me-2 mb-1 d-flex align-items-center" 
+        src="../../../assets/img/main/logo.png" height="30" alt="" loading="lazy" 
+        style="margin-top: 2px;" data-test="logo" />
     </div>
     <ul class="navbar-nav flex-row">
-      <li class="nav-item me-3 me-lg-1">
+      <li class="nav-item me-3 me-lg-1" data-test="welcome-message">
         <a class="nav-link d-sm-flex align-items-sm-center">
           <strong class="d-none d-sm-block ms-1">Welcome back, {{userLoggedIn.email}}</strong>
         </a>
       </li>
-      <li class="nav-item me-3 me-lg-1">
+      <li class="nav-item me-3 me-lg-1" data-test="logout-button">
         <a class="nav-link" (click)="logout()">
           <span><i class="fas fa-sign-out fa-lg"></i></span>
         </a>
@@ -20,71 +20,6 @@
   </div>
 </nav>
 
-<div class="container p-4">
-
-  <div class="row">
-
-    <div class="col-10">
-
-      <div class="border rounded-5 p-4">
-
-        <input class="form-control form-control-lg" type="file" (change)="onFileSelected($event)" multiple />
-
-      </div>
-
-    </div>
-
-    <div class="col-2">
-
-      <div class="border rounded-5 h-100 d-flex align-items-center justify-content-center">
-
-        <button type="button" class="btn btn-primary text-white" (click)="deleteAllFiles()"
-          [disabled]="userLoggedInUploadedFiles.length > 0 ? false : true" mdbRipple>
-          <i class="fas fa-trash me-2"></i>
-          Clear All Files
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <hr class="hr" />
-
-  <div class="row">
-    <div class="col-md">
-      <ng-container *ngIf="userLoggedInUploadedFiles.length > 0; else noFilesAvailable">
-        <div class="table-responsive border rounded-5">
-
-          <table class="table align-middle mb-0 bg-white">
-            <tbody>
-              <tr *ngFor="let file of userLoggedInUploadedFiles">
-                <td>
-                  <div class="d-flex align-items-center">
-                    <img [src]="file.imgURL" alt="" style="width: 45px; height: 45px">
-                    <div class="ms-3">
-                      <p class="fw-bold mb-1">{{ file.name }}</p>
-                      <p class="text-muted mb-0">Size: {{ file.size }} kb</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="text-center">
-                  <a class="btn btn-danger text-white" (click)="deleteFile(file.id)" role="button" mdbRipple>
-                    <i class="fas fa-trash"></i>
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-        </div>
-      </ng-container>
-      <ng-template #noFilesAvailable>
-        <section class="text-center">
-          <h4>No files uploaded</h4>
-        </section>
-      </ng-template>
-    </div>
-  </div>
+<div class="container p-4" data-test="file-list-container">
+  <app-file-list></app-file-list>
 </div>

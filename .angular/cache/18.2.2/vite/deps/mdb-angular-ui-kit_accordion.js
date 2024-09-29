@@ -1,10 +1,10 @@
 import {
-  coerceBooleanProperty
-} from "./chunk-EACFXECD.js";
-import {
   MdbCollapseDirective,
   MdbCollapseModule
 } from "./chunk-555QG3E6.js";
+import {
+  coerceBooleanProperty
+} from "./chunk-EACFXECD.js";
 import {
   CommonModule,
   NgIf,

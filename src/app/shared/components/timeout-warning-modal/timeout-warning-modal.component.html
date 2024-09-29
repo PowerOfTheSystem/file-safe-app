@@ -1,0 +1,11 @@
+<div class="modal-header">
+    <h5 class="modal-title">Session Timeout Warning</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close(false)"></button>
+</div>
+<div class="modal-body">
+    <p>You will be logged out in <strong>{{ countdown }} seconds</strong> due to inactivity.</p>
+    <p>Please click "Continue" to extend your session.</p>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="continueSession()">Continue</button>
+</div>

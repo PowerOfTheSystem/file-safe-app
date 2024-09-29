@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { LayoutComponent } from './components/layout/layout.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { authGuard } from './guard/auth.guard';
+import { FileListComponent } from './components/file-list/file-list.component';
 
 const routes: Routes = [
   {
@@ -20,8 +20,8 @@ const routes: Routes = [
       component:LayoutComponent,
       children: [
           {
-              path:'dashboard',
-              component:DashboardComponent,
+              path:'file-list',
+              component:FileListComponent,
               canActivate: [authGuard]
           }
       ]

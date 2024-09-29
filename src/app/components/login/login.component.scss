@@ -1,3 +1,5 @@
+$darkCstBackground: #060D17;
+
 .divider:after,
 .divider:before {
     content: "";
@@ -21,5 +23,5 @@
 }
 
 input {
-    border-bottom: 1px solid #060D17 !important;
+    border-bottom: 1px solid $darkCstBackground !important;
 }

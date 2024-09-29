@@ -1,10 +1,10 @@
 import {
-  coerceBooleanProperty
-} from "./chunk-EACFXECD.js";
-import {
   FormsModule,
   NG_VALUE_ACCESSOR
 } from "./chunk-AYDBLHZB.js";
+import {
+  coerceBooleanProperty
+} from "./chunk-EACFXECD.js";
 import {
   CommonModule,
   NgClass,

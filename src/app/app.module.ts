@@ -24,11 +24,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastNoAnimationModule } from 'ngx-toastr';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -49,9 +48,14 @@ import { HttpClientModule } from '@angular/common/http';
     MdbValidationModule,
     AppRoutingModule,
     HttpClientModule,
-    NgIdleKeepaliveModule.forRoot()
+    NgIdleKeepaliveModule.forRoot(),
+    ToastNoAnimationModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-center',
+      preventDuplicates: true,
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

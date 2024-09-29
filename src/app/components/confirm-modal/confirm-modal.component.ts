@@ -6,7 +6,7 @@ import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
   standalone: true,
   imports: [],
   templateUrl: './confirm-modal.component.html',
-  styleUrl: './confirm-modal.component.scss'
+  styleUrl: './confirm-modal.component.scss',
 })
 export class ConfirmModalComponent {
   title: string | null = null;
@@ -15,6 +15,6 @@ export class ConfirmModalComponent {
   constructor(public modalRef: MdbModalRef<ConfirmModalComponent>) {}
 
   close(): void {
-    this.modalRef.close()
+    this.modalRef.close(true);
   }
 }
