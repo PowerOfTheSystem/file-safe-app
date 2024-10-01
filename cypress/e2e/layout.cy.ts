@@ -1,4 +1,4 @@
-import { christopherUser, powerdosistem } from '../mocks/users';
+import { userMock } from '../mocks/users';
 
 describe('LayoutComponent', () => {
   beforeEach(() => {
@@ -7,16 +7,15 @@ describe('LayoutComponent', () => {
     sessionStorage.setItem(
       'userStorage',
       JSON.stringify([
-        { password: christopherUser.password, email: christopherUser.email },
-        { password: powerdosistem.password, email: powerdosistem.email },
+        { password: userMock.password, email: userMock.email }
       ])
     );
 
     sessionStorage.setItem(
       'userLoggedIn',
       JSON.stringify({
-        password: christopherUser.password,
-        email: christopherUser.email,
+        password: userMock.password,
+        email: userMock.email,
       })
     );
 
@@ -26,7 +25,7 @@ describe('LayoutComponent', () => {
   it('should display the welcome message with the user email', () => {
     cy.get('[data-test="welcome-message"]').should(
       'contain.text',
-      `Welcome back, ${christopherUser.email}`
+      `Welcome back, ${userMock.email}`
     );
   });
 

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "mdb-angular-ui-kit-free": {
+    "file-safe": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -21,7 +21,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": {
-              "base": "dist/mdb-angular-ui-kit-free"
+              "base": "dist/file-safe"
             },
             "index": "src/index.html",
             "polyfills": [
@@ -74,10 +74,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "mdb-angular-ui-kit-free:build:production"
+              "buildTarget": "file-safe:build:production"
             },
             "development": {
-              "buildTarget": "mdb-angular-ui-kit-free:build:development"
+              "buildTarget": "file-safe:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,7 +85,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "mdb-angular-ui-kit-free:build"
+            "buildTarget": "file-safe:build"
           }
         },
         "test": {

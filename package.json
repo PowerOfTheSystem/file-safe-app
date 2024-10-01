@@ -1,5 +1,5 @@
 {
-  "name": "mdb-angular-ui-kit-free",
+  "name": "file-safe",
   "version": "7.0.0",
   "scripts": {
     "ng": "ng",
@@ -34,8 +34,10 @@
     "@angular-devkit/build-angular": "^18.2.2",
     "@angular/cli": "^18.2.2",
     "@angular/compiler-cli": "^18.2.3",
+    "@cypress/webpack-preprocessor": "^6.0.2",
     "@types/jasmine": "~5.1.0",
     "cypress": "^13.15.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-file-upload": "^5.0.8",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",

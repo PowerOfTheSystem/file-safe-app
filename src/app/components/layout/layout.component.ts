@@ -23,6 +23,7 @@ export class LayoutComponent implements OnInit {
     }
   }
 
+  // Clear the userLoggedIn object from the sessionStorage and navigates the user to the login
   logout(): void {
     if (this.userLoggedIn) {
       sessionStorage.removeItem('userLoggedIn');

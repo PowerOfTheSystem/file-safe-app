@@ -1,46 +1,56 @@
-import { christopherUser, powerdosistem } from '../mocks/users';
+import { filesMock } from 'cypress/mocks/files';
+import { userMock } from '../mocks/users';
+import { File } from 'src/app/models/file';
 
 describe('FileListComponent', () => {
   beforeEach(() => {
-    const mockFiles = [
-      {
-        id: '1',
-        name: 'testfile1.txt',
-        size: 200,
-        type: 'text/plain',
-        imgURL: '../../../assets/img/files/txt.png',
-      },
-      {
-        id: '2',
-        name: 'testfile2.txt',
-        size: 300,
-        type: 'text/plain',
-        imgURL: '../../../assets/img/files/txt.png',
-      },
-    ];
+    const mockFiles: File = filesMock;
 
     sessionStorage.setItem(
       'uploadedFiles',
-      JSON.stringify([{ email: christopherUser.email, files: mockFiles }])
+      JSON.stringify([{ email: userMock.email, files: mockFiles }])
     );
 
     sessionStorage.setItem(
       'userStorage',
       JSON.stringify([
-        { password: christopherUser.password, email: christopherUser.email },
-        { password: powerdosistem.password, email: powerdosistem.email },
+        { password: userMock.password, email: userMock.email },
       ])
     );
 
     sessionStorage.setItem(
       'userLoggedIn',
       JSON.stringify({
-        password: christopherUser.password,
-        email: christopherUser.email,
+        password: userMock.password,
+        email: userMock.email,
       })
     );
 
     cy.visit('/file-list');
+  });
+
+  it('should save uploaded files to sessionStorage', () => {
+    const fileName = 'photo.png';
+    const fileType = 'image/png';
+
+    cy.get('[data-test="file-input"]').selectFile('cypress/fixtures/photo.png');
+
+    cy.window().then((win) => {
+      const uploadedFiles = win.sessionStorage.getItem('uploadedFiles');
+      const parsedFiles = JSON.parse(uploadedFiles);
+
+      expect(parsedFiles).to.be.an('array').and.have.length.greaterThan(0);
+      const userFileEntry = parsedFiles.find(
+        (entry) => entry.email === userMock.email
+      );
+
+      expect(userFileEntry).to.exist;
+      expect(userFileEntry.files)
+        .to.be.an('array')
+        .and.have.length.greaterThan(0);
+      expect(userFileEntry.files[2].name).to.equal(fileName);
+      expect(userFileEntry.files[2].type).to.equal(fileType);
+    });
   });
 
   it('should delete a file', () => {
@@ -48,13 +58,13 @@ describe('FileListComponent', () => {
 
     cy.get('.modal-footer .btn-primary').click();
 
-    cy.get('[data-test=file-list] tr').should('have.length', 1); 
+    cy.get('[data-test=file-list] tr').should('have.length', 1);
   });
 
   it('should clear all files', () => {
     cy.get('[data-test=clear-all-button]').click();
 
-    cy.get('.modal-footer .btn-primary').click(); 
+    cy.get('.modal-footer .btn-primary').click();
 
     cy.get('[data-test=file-list] tr').should('have.length', 0);
   });

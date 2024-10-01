@@ -19,18 +19,21 @@ export class SessionTimerService {
     private router: Router,
     private modalService: MdbModalService
   ) {
+    // Initialize the session timer to 5 minutes
     this.idle.setIdle(300);
+    // Initialize the countdown timer after the 5 minutes have passed
     this.idle.setTimeout(30);
-    this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
 
+    // Initialize the session timer to 5 minutes
+    // this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
+
+    // Detects activity and resets the timer
     this.idle.onIdleEnd.subscribe(() => {
-      this.idleState = 'No longer idle.';
       this.resetTimer();
     });
 
+    // Initizalizes the countdown opening the TimeoutWarningModal
     this.idle.onTimeoutWarning.subscribe((countdown: number) => {
-      this.idleState = `You will time out in ${countdown} seconds!`;
-
       if (!this.countdownModalOpen) {
         this.countdownModalOpen = true;
 
@@ -40,6 +43,7 @@ export class SessionTimerService {
           ignoreBackdropClick: false,
         });
 
+        // If the result from the TimeoutWarningModal is true, the timer resets, otherwise we logout the user
         this.modalRef.onClose.subscribe((result: boolean) => {
           this.countdownModalOpen = false;
 
@@ -52,15 +56,18 @@ export class SessionTimerService {
       }
     });
 
+    // Initializes the timer
     this.resetTimer();
   }
 
+  // Initializes the timer
   resetTimer() {
     this.idle.watch();
     this.idleState = 'Started watching for inactivity.';
     this.timedOut = false;
   }
 
+  // Clear the userLoggedIn object from the sessionStorage and navigates the user to the login
   logout() {
     sessionStorage.removeItem('userLoggedIn');
     this.router.navigateByUrl('login');

@@ -3,5 +3,5 @@ export type File = {
   name: string;
   size: number;
   type: string;
-  imgURL: string;
+  extension: string;
 };

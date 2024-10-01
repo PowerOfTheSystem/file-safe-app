@@ -1,10 +1,10 @@
 import {
+  BreakpointObserver
+} from "./chunk-5AYEE4XO.js";
+import {
   ContentObserver,
   ObserversModule
 } from "./chunk-GS5YEW5E.js";
-import {
-  BreakpointObserver
-} from "./chunk-5AYEE4XO.js";
 import {
   A,
   ALT,

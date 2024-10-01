@@ -1,3 +1,4 @@
+// cypress/support/commands.ts
 import 'cypress-file-upload';
 
 /// <reference types="cypress" />

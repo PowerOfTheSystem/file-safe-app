@@ -1,4 +1,4 @@
-import { christopherUser } from '../mocks/users';
+import { userMock } from '../mocks/users';
 
 describe('Login and Registration Flow', () => {
   beforeEach(() => {
@@ -57,14 +57,14 @@ describe('Login and Registration Flow', () => {
   it('should register a user and login successfully', () => {
     cy.get('[data-test="register-link"]').click();
 
-    cy.get('[data-test="register-email"]').type(christopherUser.email);
-    cy.get('[data-test="register-password"]').type(christopherUser.password);
+    cy.get('[data-test="register-email"]').type(userMock.email);
+    cy.get('[data-test="register-password"]').type(userMock.password);
     cy.get('[data-test="register-button"]').click();
 
     cy.contains('User successfully registered').should('exist');
 
-    cy.get('[data-test="login-email"]').type(christopherUser.email);
-    cy.get('[data-test="login-password"]').type(christopherUser.password);
+    cy.get('[data-test="login-email"]').type(userMock.email);
+    cy.get('[data-test="login-password"]').type(userMock.password);
     cy.get('[data-test="login-button"]').click();
 
     cy.url().should('include', '/file-list');

@@ -1,12 +1,12 @@
 import {
-  HttpClient,
-  HttpRequest
-} from "./chunk-HLYK5WST.js";
-import {
   KeepaliveSvc,
   NgIdleModule,
   provideNgIdle
 } from "./chunk-ZARH2FJQ.js";
+import {
+  HttpClient,
+  HttpRequest
+} from "./chunk-HLYK5WST.js";
 import "./chunk-5JKZFD73.js";
 import {
   EventEmitter,
